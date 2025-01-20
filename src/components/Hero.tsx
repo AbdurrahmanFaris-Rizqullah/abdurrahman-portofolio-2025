@@ -2,8 +2,11 @@ const Hero = () => {
   return (
     <section className="flex min-h-screen items-center justify-center pt-16">
       <div className="container mx-auto px-4 text-center">
-        <h1 className="mb-6 text-5xl font-bold text-white">Halo, Saya Backend Developer</h1>
-        <p className="mb-8 text-xl text-gray-300 max-w-2xl mx-auto">Spesialis dalam pengembangan API, sistem terdistribusi, dan arsitektur mikroservis. Berpengalaman dengan Node.js, Python, dan berbagai teknologi database.</p>
+        <div className="mb-8">
+          <img src="/images/profile/avatar.jpg" alt="Profile Picture" className="w-32 h-32 rounded-full mx-auto border-4 border-blue-500 shadow-lg" />
+        </div>
+        <h1 className="mb-6 text-5xl font-bold text-white">Abdurrahman Faris Rizqullah</h1>
+        <p className="mb-8 text-xl text-gray-300 max-w-2xl mx-auto">6th semester Informatics undergraduate student at Institut Teknologi Sains dan Kesehatan Rumah Sakit dr. Soepraoen Kesdam V/BRW Malang</p>
         <div className="flex gap-4 justify-center">
           <a href="#projects" className="rounded-full bg-blue-600 px-8 py-3 font-semibold text-white hover:bg-blue-700">
             Lihat Proyek

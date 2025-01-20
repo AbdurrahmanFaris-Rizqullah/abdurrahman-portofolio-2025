@@ -3,13 +3,10 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 // GET /api/projects/[id]
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function GET(request: Request, { params }: { params: { id: string } }) {
   try {
     const project = await prisma.project.findUnique({
-      where: { id: params.id }
+      where: { id: params.id },
     });
     return NextResponse.json(project);
   } catch (error) {
@@ -18,10 +15,7 @@ export async function GET(
 }
 
 // PUT /api/projects/[id]
-export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(request: Request, { params }: { params: { id: string } }) {
   try {
     const session = await getServerSession();
     if (!session) {
@@ -38,7 +32,7 @@ export async function PUT(
         githubUrl: json.githubUrl,
         liveUrl: json.liveUrl,
         imageUrl: json.imageUrl,
-      }
+      },
     });
 
     return NextResponse.json(project);
@@ -48,10 +42,7 @@ export async function PUT(
 }
 
 // DELETE /api/projects/[id]
-export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: Request, { params }: { params: { id: string } }) {
   try {
     const session = await getServerSession();
     if (!session) {
@@ -59,11 +50,11 @@ export async function DELETE(
     }
 
     await prisma.project.delete({
-      where: { id: params.id }
+      where: { id: params.id },
     });
 
     return NextResponse.json({ message: "Project deleted" });
   } catch (error) {
     return NextResponse.json({ error: "Error deleting project" }, { status: 500 });
   }
-} 
+}

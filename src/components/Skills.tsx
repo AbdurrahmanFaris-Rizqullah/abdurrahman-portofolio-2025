@@ -26,11 +26,12 @@ const Skills = () => {
       { id: 8, name: "MySQL", category: "Database Tools/ORM", proficiency: 80 },
       { id: 9, name: "Prisma", category: "Database Tools/ORM", proficiency: 90 },
       { id: 10, name: "Sequelize", category: "Database Tools/ORM", proficiency: 80 },
+      { id: 11, name: "SQLAlchemy", category: "Database Tools/ORM", proficiency: 65 },
     ],
     Tools: [
-      { id: 11, name: "Git", category: "Tools", proficiency: 90 },
-      { id: 12, name: "Postman", category: "Tools", proficiency: 85 },
-      { id: 13, name: "Swagger", category: "Tools", proficiency: 80 },
+      { id: 12, name: "Git", category: "Tools", proficiency: 90 },
+      { id: 13, name: "Postman", category: "Tools", proficiency: 85 },
+      { id: 14, name: "Swagger", category: "Tools", proficiency: 80 },
     ],
   });
 

@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET() {
   try {
     const projects = await prisma.project.findMany({
-      orderBy: { createdAt: 'desc' }
+      orderBy: { createdAt: "desc" },
     });
     return NextResponse.json(projects);
   } catch (error) {
@@ -31,11 +31,11 @@ export async function POST(request: Request) {
         githubUrl: json.githubUrl,
         liveUrl: json.liveUrl,
         imageUrl: json.imageUrl,
-      }
+      },
     });
 
     return NextResponse.json(project);
   } catch (error) {
     return NextResponse.json({ error: "Error creating project" }, { status: 500 });
   }
-} 
+}
