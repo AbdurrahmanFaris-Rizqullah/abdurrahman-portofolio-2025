@@ -14,24 +14,24 @@ interface Skill {
 const Skills = () => {
   const [skills, setSkills] = useState<Record<string, Skill[]>>({
     Backend: [
-      { id: 1, name: "Node.js", category: "Backend", proficiency: 90 },
-      { id: 2, name: "Express", category: "Backend", proficiency: 95 },
-      { id: 3, name: "Python", category: "Backend", proficiency: 75 },
-      { id: 4, name: "Next.js", category: "Backend", proficiency: 85 },
-      { id: 5, name: "FastAPI", category: "Backend", proficiency: 70 },
-      { id: 6, name: "FlaskAPI", category: "Backend", proficiency: 70 },
+      { id: 1, name: "Node.js", category: "Backend", proficiency: 90, iconUrl: "https://cdn.simpleicons.org/nodedotjs" },
+      { id: 2, name: "Express", category: "Backend", proficiency: 95, iconUrl: "https://cdn.simpleicons.org/express/white" },
+      { id: 3, name: "Python", category: "Backend", proficiency: 75, iconUrl: "https://cdn.simpleicons.org/python" },
+      { id: 4, name: "Next.js", category: "Backend", proficiency: 85, iconUrl: "https://cdn.simpleicons.org/nextdotjs/white" },
+      { id: 5, name: "FastAPI", category: "Backend", proficiency: 70, iconUrl: "https://cdn.simpleicons.org/fastapi" },
+      { id: 6, name: "Flask", category: "Backend", proficiency: 70, iconUrl: "https://cdn.simpleicons.org/flask/white" },
     ],
     "Database Tools/ORM": [
-      { id: 7, name: "PostgreSQL", category: "Database Tools/ORM", proficiency: 85 },
-      { id: 8, name: "MySQL", category: "Database Tools/ORM", proficiency: 80 },
-      { id: 9, name: "Prisma", category: "Database Tools/ORM", proficiency: 90 },
-      { id: 10, name: "Sequelize", category: "Database Tools/ORM", proficiency: 80 },
-      { id: 11, name: "SQLAlchemy", category: "Database Tools/ORM", proficiency: 65 },
+      { id: 7, name: "PostgreSQL", category: "Database Tools/ORM", proficiency: 85, iconUrl: "https://cdn.simpleicons.org/postgresql" },
+      { id: 8, name: "MySQL", category: "Database Tools/ORM", proficiency: 80, iconUrl: "https://cdn.simpleicons.org/mysql" },
+      { id: 9, name: "Prisma", category: "Database Tools/ORM", proficiency: 90, iconUrl: "https://cdn.simpleicons.org/prisma" },
+      { id: 10, name: "Sequelize", category: "Database Tools/ORM", proficiency: 80, iconUrl: "https://cdn.simpleicons.org/sequelize" },
+      { id: 11, name: "SQLAlchemy", category: "Database Tools/ORM", proficiency: 65, iconUrl: "https://cdn.simpleicons.org/sqlalchemy/white" },
     ],
     Tools: [
-      { id: 12, name: "Git", category: "Tools", proficiency: 90 },
-      { id: 13, name: "Postman", category: "Tools", proficiency: 85 },
-      { id: 14, name: "Swagger", category: "Tools", proficiency: 80 },
+      { id: 12, name: "Git", category: "Tools", proficiency: 90, iconUrl: "https://cdn.simpleicons.org/git" },
+      { id: 13, name: "Postman", category: "Tools", proficiency: 85, iconUrl: "https://cdn.simpleicons.org/postman" },
+      { id: 14, name: "Swagger", category: "Tools", proficiency: 80, iconUrl: "https://cdn.simpleicons.org/swagger" },
     ],
   });
 
@@ -47,7 +47,10 @@ const Skills = () => {
                 {items.map((skill) => (
                   <li key={skill.id} className="text-gray-300">
                     <div className="flex items-center justify-between">
-                      <span>• {skill.name}</span>
+                      <div className="flex items-center gap-2">
+                        {skill.iconUrl && <img src={skill.iconUrl} alt={`${skill.name} icon`} className="w-5 h-5 object-contain" />}
+                        <span>• {skill.name}</span>
+                      </div>
                       <span className="text-sm text-blue-400">{skill.proficiency}%</span>
                     </div>
                     <div className="mt-1 h-1 w-full bg-gray-600 rounded-full">

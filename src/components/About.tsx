@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const About = () => {
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-gray-900 to-gray-800">
@@ -7,6 +9,25 @@ const About = () => {
         </h2>
 
         <div className="max-w-4xl mx-auto">
+
+          {/* Team Image */}
+          <div className="mb-12 relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
+            <div className="relative bg-gray-800 rounded-2xl overflow-hidden">
+              <Image 
+                src="/background/bersama.jpg" 
+                alt="Team Photo" 
+                width={1920} 
+                height={1080} 
+                className="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <p className="text-white text-lg font-medium">Bersama Tim di PT. Multi Solusindo (Urbansolv)</p>
+              </div>
+            </div>
+          </div>
+          
           {/* Bio Section */}
           <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 mb-12 transform hover:scale-[1.02] transition-all">
             <p className="text-lg text-gray-300 leading-relaxed">
@@ -14,6 +35,7 @@ const About = () => {
               scalable.
             </p>
           </div>
+
 
           {/* Experience Section */}
           <div className="grid md:grid-cols-2 gap-8">
@@ -51,7 +73,7 @@ const About = () => {
               <div className="space-y-8">
                 <div className="relative pl-6 border-l-2 border-purple-500">
                   <div className="absolute w-3 h-3 bg-purple-500 rounded-full -left-[7px] top-2"></div>
-                  <div className="text-white font-medium">Head Of PR</div>
+                  <div className="text-white font-medium">Head Of Promosi Division</div>
                   <div className="text-purple-400 text-sm mb-1">Himpunan Mahasiswa Informatika ITSK RS dr.Soepraoen</div>
                   <div className="text-gray-400 text-sm mb-2">Oct 2022 - Oct 2024</div>
                   <p className="text-gray-300">Mengkoordinasikan produksi video, desain, dan dokumentasi untuk Himpunan Mahasiswa, menghasilkan 10+ proyek per semester dengan tingkat kepuasan 90% dari stakeholder.</p>
