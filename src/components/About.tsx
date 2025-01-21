@@ -1,73 +1,115 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const About = () => {
-  return (
-    <section id="about" className="relative py-20">
-      {/* Background SVG dari SVGBackgrounds.com */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-gray-800">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundAttachment: "fixed",
-            backgroundSize: "50px",
-          }}
-        ></div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
 
-        {/* Optional: Animated Gradient Overlay */}
-        <div
-          className="absolute inset-0 opacity-50"
-          style={{
-            background: "linear-gradient(45deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15))",
-            backgroundSize: "400% 400%",
-            animation: "gradient 15s ease infinite",
-          }}
-        ></div>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  return (
+    <section id="about" className="relative py-20 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900/20 to-gray-900">
+          <div className="absolute inset-0 bg-[url('/patterns/circuit-board.svg')] opacity-5" />
+        </div>
+
+        {/* Animated gradient orbs */}
+        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+
+        {/* Animated particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400/50 rounded-full"
+              initial={{
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+              }}
+              animate={{
+                y: [null, Math.random() * -500],
+                opacity: [0.5, 0],
+              }}
+              transition={{
+                duration: Math.random() * 5 + 5,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-white mb-16">
-          <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">Tentang Saya</span>
-        </h2>
+      <motion.div className="container relative z-10 mx-auto px-4" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <motion.h2 className="text-4xl font-bold text-center text-white mb-16" variants={itemVariants}>
+          <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">About Me</span>
+        </motion.h2>
 
         <div className="max-w-4xl mx-auto">
           {/* Team Image with hover effect */}
-          <div className="mb-12 relative group">
+          <motion.div className="mb-12 relative group" variants={itemVariants}>
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
-            <div className="relative bg-gray-800 rounded-2xl overflow-hidden">
+            <motion.div className="relative bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden" whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
               <Image src="/background/bersama.jpg" alt="Team Photo" width={1920} height={1080} className="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="text-white text-lg font-medium">Bersama Tim di PT. Multi Solusindo (Urbansolv)</p>
-              </div>
-            </div>
-          </div>
+              <motion.div className="absolute bottom-0 left-0 right-0 p-6" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
+                <p className="text-white text-lg font-medium">With the Team at PT. Multi Solusindo (Urbansolv)</p>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
-          {/* Bio Section with glass effect */}
-          <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 mb-12 transform hover:scale-[1.02] transition-all">
+          {/* Bio Section */}
+          <motion.div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 mb-12 transform hover:scale-[1.02] transition-all hover:border-blue-500/50" variants={itemVariants}>
             <p className="text-lg text-gray-300 leading-relaxed">
-              Saya adalah mahasiswa semester 6 Informatika di Institut Teknologi Sains dan Kesehatan RS dr. Soepraoen Kesdam V/BRW Malang, dengan passion di Backend Development dan ketertarikan kuat dalam menciptakan sistem yang efisien dan
-              scalable.
+              I am a 6th-semester Informatics student at ITSK RS dr. Soepraoen Kesdam V/BRW Malang, with a strong passion for Backend Development and a keen interest in creating efficient, scalable systems. My academic journey has been
+              complemented by hands-on experience in developing robust backend solutions and implementing modern technologies.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Experience Sections */}
-          <div className="grid gap-8">
+          {/* Experience Grid */}
+          <motion.div className="grid gap-8" variants={containerVariants}>
             {/* Work & Academic Grid */}
             <div className="grid md:grid-cols-2 gap-8">
-              {/* Work Experience - dengan hover effect dan animasi */}
-              <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 transform hover:scale-[1.02] transition-all hover:border-blue-500/50">
+              {/* Work Experience */}
+              <motion.div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 transform hover:scale-[1.02] transition-all hover:border-blue-500/50" variants={itemVariants} whileHover={{ scale: 1.02 }}>
                 <h3 className="text-2xl font-semibold text-white mb-6 flex items-center">
-                  <span className="text-blue-500 text-2xl mr-3 animate-bounce">💼</span>
-                  Pengalaman Kerja
+                  <motion.span className="text-blue-500 text-2xl mr-3" animate={{ y: [-2, 2, -2] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                    💼
+                  </motion.span>
+                  Professional Experience
                 </h3>
 
                 {/* Main Company */}
                 <div className="mb-8">
                   <div className="text-2xl font-bold text-white">PT. Multi Solusindo (Urbansolv)</div>
-                  <div className="text-blue-400 text-lg mb-1">Junior Backend Programmer</div>
+                  <div className="text-blue-400 text-lg mb-1">Junior Backend Developer</div>
                   <div className="text-gray-400 mb-2">Oct 2024 - Dec 2024 • Dago, Bandung - Indonesia</div>
-                  <div className="text-gray-300">Urbansolv, bagian dari SCCIC ITB, mengembangkan solusi pintar (otomasi, IoT, AI) untuk smart cities dan komunitas berkelanjutan. Klien utama: Kominfo, NTU. Produk unggulan: CENA & VAIA.</div>
+                  <div className="text-gray-300">
+                    Urbansolv, part of SCCIC ITB, develops smart solutions (automation, IoT, AI) for smart cities and sustainable communities. Major clients: Ministry of Communication and Information Technology, NTU. Flagship products: CENA
+                    & VAIA.
+                  </div>
                 </div>
 
                 <div className="space-y-8">
@@ -76,19 +118,19 @@ const About = () => {
                     <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-[7px] top-2"></div>
                     <div className="text-white font-medium">Smart Building Simulator</div>
                     <ul className="list-disc pl-4 text-gray-300 space-y-2 mt-2">
-                      <li>Mengembangkan sistem backend menggunakan JavaScript (Next.js, Express.js) dan Python (FlaskAPI, FastAPI), mengintegrasikan fitur monitoring dan workflow machine learning.</li>
-                      <li>Secara mandiri melatih model machine learning awal sebelum bergabungnya tim Data Science, membangun fondasi untuk pengembangan dan integrasi model selanjutnya.</li>
+                      <li>Developed backend systems using JavaScript (Next.js, Express.js) and Python (FlaskAPI, FastAPI), integrating monitoring features and machine learning workflows.</li>
+                      <li>Independently trained initial machine learning models before the Data Science team joined, establishing foundations for subsequent model development and integration.</li>
                     </ul>
                   </div>
 
                   {/* Digital Twin */}
                   <div className="relative pl-6 border-l-2 border-blue-500">
                     <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-[7px] top-2"></div>
-                    <div className="text-white font-medium">Digital Twin</div>
+                    <div className="text-white font-medium">Digital Twin - Water Monitoring System</div>
                     <ul className="list-disc pl-4 text-gray-300 space-y-2 mt-2">
                       <li>
-                        Mengelola backend sistem monitoring air 3D untuk empat asrama (masing-masing berkapasitas 30 penghuni). Merancang dan mengimplementasikan indikator proses untuk filtrasi dan distribusi air, meningkatkan akurasi
-                        sensor sebesar 20% dan memungkinkan wawasan penggunaan yang fleksibel untuk peneliti dan manajer fasilitas.
+                        Managed the backend of a 3D water monitoring system for four dormitories (30 residents each). Designed and implemented process indicators for water filtration and distribution, improving sensor accuracy by 20% and
+                        enabling flexible usage insights for researchers and facility managers.
                       </li>
                     </ul>
                   </div>
@@ -121,12 +163,14 @@ const About = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              {/* Academic Experience - dengan hover effect dan animasi */}
-              <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 transform hover:scale-[1.02] transition-all hover:border-green-500/50">
+              {/* Academic Experience */}
+              <motion.div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 transform hover:scale-[1.02] transition-all hover:border-green-500/50" variants={itemVariants} whileHover={{ scale: 1.02 }}>
                 <h3 className="text-2xl font-semibold text-white mb-6 flex items-center">
-                  <span className="text-green-500 text-2xl mr-3 animate-bounce">🎓</span>
+                  <motion.span className="text-green-500 text-2xl mr-3" animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
+                    🎓
+                  </motion.span>
                   Pengalaman Akademik
                 </h3>
 
@@ -198,13 +242,15 @@ const About = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
-            {/* Organizations - dengan hover effect dan animasi */}
-            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 transform hover:scale-[1.02] transition-all hover:border-purple-500/50">
+            {/* Organizations */}
+            <motion.div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 transform hover:scale-[1.02] transition-all hover:border-purple-500/50" variants={itemVariants} whileHover={{ scale: 1.02 }}>
               <h3 className="text-2xl font-semibold text-white mb-6 flex items-center">
-                <span className="text-purple-500 text-2xl mr-3 animate-bounce">🎯</span>
+                <motion.span className="text-purple-500 text-2xl mr-3" animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }}>
+                  🎯
+                </motion.span>
                 Organisasi
               </h3>
               <div className="space-y-8">
@@ -259,10 +305,10 @@ const About = () => {
                   </ul>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

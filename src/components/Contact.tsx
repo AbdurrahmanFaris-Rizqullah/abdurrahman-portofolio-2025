@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 // Di bagian atas file, tambahkan type untuk color
 type ContactColor = "blue" | "green" | "purple" | "gray" | "red";
@@ -24,9 +27,9 @@ const CONTACTS = [
   {
     title: "LinkedIn",
     value: "abdurrahman-faris-rizqullah",
-    iconUrl: "https://cdn.simpleicons.org/linkedin/white",
-    link: "https://www.linkedin.com/in/abdurrahman-faris-rizqullah-4612a303/",
-    color: "purple" as ContactColor,
+    iconUrl: "/icons/linkedin-white.svg", // Using local SVG file instead of CDN
+    link: "https://www.linkedin.com/in/abdurrahman-faris-rizqullah/",
+    color: "purple" as ContactColor, 
     gradient: "from-purple-500 to-indigo-400",
   },
   {
@@ -50,15 +53,15 @@ const CONTACTS = [
 const ICWR_IMAGES = [
   {
     src: "/background/icwr.jpg",
-    date: "18 Januari 2025",
-    title: "Membangun Kesadaran Keamanan Siber di Era Digital",
-    description: "Berbagi wawasan mendalam tentang pentingnya keamanan siber dan praktik terbaik dalam mengamankan data digital bersama mahasiswa UNIKAMA",
+    date: "January 18, 2025",
+    title: "Building Cybersecurity Awareness in the Digital Era",
+    description: "Sharing deep insights about the importance of cybersecurity and best practices in securing digital data with UNIKAMA students",
   },
   {
     src: "/background/icwr 2.JPG",
-    date: "14 Juli 2024",
-    title: "Testing Hacking bersama ICWR",
-    description: "Sharing Pengetahuan Security Awareness bersama Aufklarung dari Universitas Muhammadiyah Malang",
+    date: "July 14, 2024",
+    title: "Hacking Testing with ICWR",
+    description: "Sharing Security Awareness Knowledge with Aufklarung from University of Muhammadiyah Malang",
   },
 ];
 
@@ -73,7 +76,7 @@ const ContactCard = ({ contact }: { contact: (typeof CONTACTS)[0] }) => {
   };
 
   return (
-    <a href={contact.link} target="_blank" rel="noopener noreferrer" className="group relative">
+    <motion.a href={contact.link} target="_blank" rel="noopener noreferrer" className="group relative" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
       <div className={`absolute -inset-0.5 bg-gradient-to-r ${contact.gradient} rounded-xl blur opacity-25 group-hover:opacity-100 transition duration-500`} />
       <div className="relative flex items-start space-x-4 bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700/50 hover:border-transparent transform hover:scale-[1.02] transition-all duration-300">
         <div className="w-8 h-8 rounded-lg bg-gray-700/50 p-1.5 flex items-center justify-center group-hover:bg-gray-700/70 transition-colors duration-300">
@@ -85,13 +88,13 @@ const ContactCard = ({ contact }: { contact: (typeof CONTACTS)[0] }) => {
         </div>
         <span className={`${colorClasses[contact.color]} group-hover:translate-x-1 transition-transform duration-300`}>→</span>
       </div>
-    </a>
+    </motion.a>
   );
 };
 
 // Komponen untuk galeri gambar
 const ImageGallery = ({ image }: { image: (typeof ICWR_IMAGES)[0] }) => (
-  <div className="relative group">
+  <motion.div className="relative group" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} whileHover={{ scale: 1.02 }}>
     <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500" />
     <div className="relative rounded-2xl overflow-hidden bg-gray-800">
       <div className="relative aspect-video">
@@ -107,59 +110,114 @@ const ImageGallery = ({ image }: { image: (typeof ICWR_IMAGES)[0] }) => (
         <p className="text-gray-300">{image.description}</p>
       </div>
     </div>
-  </div>
+  </motion.div>
 );
 
 const Contact = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <section id="contact" className="relative py-20">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-gray-800">
-        <div className="absolute inset-0 bg-grid-white/[0.02]" />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10" />
+    <section id="contact" className="relative py-20 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900/20 to-gray-900">
+          <div className="absolute inset-0 bg-[url('/patterns/circuit-board.svg')] opacity-5" />
+        </div>
+
+        {/* Animated gradient orbs */}
+        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+
+        {/* Animated particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400/50 rounded-full"
+              initial={{
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+              }}
+              animate={{
+                y: [null, Math.random() * -500],
+                opacity: [0.5, 0],
+              }}
+              transition={{
+                duration: Math.random() * 5 + 5,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16">
-          <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">Mari Terhubung</span>
-        </h2>
+      <motion.div className="container relative z-10 mx-auto px-4" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <motion.h2 className="text-4xl font-bold text-center mb-16" variants={itemVariants}>
+          <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">Let's Connect</span>
+        </motion.h2>
 
         {/* ICWR Images Gallery */}
-        <div className="max-w-6xl mx-auto mb-16">
+        <motion.div className="max-w-6xl mx-auto mb-16" variants={itemVariants}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {ICWR_IMAGES.map((image, index) => (
               <ImageGallery key={index} image={image} />
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact Cards */}
-        <div className="max-w-5xl mx-auto">
+        <motion.div className="max-w-5xl mx-auto" variants={containerVariants}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {CONTACTS.map((contact, index) => (
-              <ContactCard key={index} contact={contact} />
+              <motion.div key={index} variants={itemVariants}>
+                <ContactCard contact={contact} />
+              </motion.div>
             ))}
           </div>
 
           {/* Call to Action */}
-          <div className="mt-16 text-center">
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">Tertarik untuk berkolaborasi atau memiliki pertanyaan? Jangan ragu untuk menghubungi saya melalui salah satu platform di atas.</p>
-            <a
+          <motion.div className="mt-16 text-center" variants={itemVariants}>
+            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">Interested in collaboration or have questions? Feel free to reach out through any of the platforms above.</p>
+            <motion.a
               href="https://wa.me/6285230184717"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-green-500 to-emerald-400 text-white font-semibold text-lg transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp" className="w-6 h-6" />
               Chat via WhatsApp
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
 
           {/* Footer */}
-          <div className="mt-16 text-center">
+          <motion.div className="mt-16 text-center" variants={itemVariants}>
             <p className="text-gray-400">© 2024 Abdurrahman Faris Rizqullah. All rights reserved.</p>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

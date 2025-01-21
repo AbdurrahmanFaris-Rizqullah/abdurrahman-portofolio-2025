@@ -53,59 +53,59 @@ const Certificates = () => {
     {
       id: 2,
       name: "Junior Web Programmer",
-      issuer: "Program Studi Sarjana Informatika ITSK RS dr. Soepraoen",
-      date: "23-24 Juli 2024",
+      issuer: "Department of Informatics ITSK RS dr. Soepraoen",
+      date: "July 23-24, 2024",
       credentialId: "015/LatJWP/VII/2024/Informatika",
       imageUrl: "/certificates/Cert (15)_Perlatihan Web Dev.jpg",
     },
     {
       id: 3,
-      name: "Memulai Pemrograman Dengan Java",
+      name: "Getting Started with Java Programming",
       issuer: "Dicoding Indonesia",
-      date: "10 April 2023",
+      date: "April 10, 2023",
       credentialId: "NVP7OGR94PRO",
       imageUrl: "/certificates/java.jpg",
       verifyLink: "https://dicoding.com/certificates/NVP7OGR94PRO",
-      validUntil: "10 April 2026",
+      validUntil: "April 10, 2026",
     },
     {
       id: 4,
-      name: "Belajar Dasar Pemrograman JavaScript",
+      name: "JavaScript Programming Fundamentals",
       issuer: "Dicoding Indonesia",
-      date: "28 Oktober 2024",
+      date: "October 28, 2024",
       credentialId: "4EXG773YQPRL",
       imageUrl: "/certificates/javascript.jpg",
       verifyLink: "https://dicoding.com/certificates/4EXG773YQPRL",
-      validUntil: "28 Oktober 2027",
+      validUntil: "October 28, 2027",
     },
     {
       id: 5,
-      name: "Pengenalan ke Logika Pemrograman (Programming Logic 101)",
+      name: "Introduction to Programming Logic (Programming Logic 101)",
       issuer: "Dicoding Indonesia",
-      date: "03 Juni 2024",
+      date: "June 03, 2024",
       credentialId: "0LZ0645NQZ65",
       imageUrl: "/certificates/logic.jpg",
       verifyLink: "https://dicoding.com/certificates/0LZ0645NQZ65",
-      validUntil: "03 Juni 2027",
+      validUntil: "June 03, 2027",
     },
     {
       id: 6,
-      name: "SIMULASI LAB KOMPUTER ARTIFICIAL INTELLIGENCE (AI) DI ITSK RS. DR. SOEPRAOEN MEMASUKI DUNIA BARU MELALUI VIRTUAL REALITY (VR)",
-      issuer: "Direktorat Jenderal Kekayaan Intelektual",
-      date: "21 Februari 2024",
+      name: "AI LABORATORY COMPUTER SIMULATION AT ITSK RS. DR. SOEPRAOEN ENTERING A NEW WORLD THROUGH VIRTUAL REALITY (VR)",
+      issuer: "Directorate General of Intellectual Property",
+      date: "February 21, 2024",
       credentialId: "EC00202416916",
       imageUrl: "/certificates/hak-cipta.jpg",
-      type: "Hak Cipta",
+      type: "Copyright",
       registrationNumber: "000592286",
     },
     {
       id: 1,
       name: "Informatics Gathering Night 2023",
-      issuer: "Himpunan Mahasiswa Informatika ITSK RS dr. Soepraoen",
+      issuer: "Informatics Student Association ITSK RS dr. Soepraoen",
       date: "2023",
       credentialId: "007/IGN/HIMATIF/2023",
       imageUrl: "/certificates/Abdurrahman-GatheringHimatif-007.png",
-      role: "Panitia",
+      role: "Committee",
     },
   ];
 
@@ -113,8 +113,10 @@ const Certificates = () => {
     <section id="certificates" className="py-20 bg-gradient-to-b from-gray-900 to-gray-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Sertifikasi</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">Kumpulan sertifikat dan pencapaian yang telah diperoleh dalam perjalanan pengembangan skill dan karir</p>
+          <h2 className="text-4xl font-bold text-white mb-4">Certifications</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Collection of certificates and achievements obtained throughout my skill development and career journey
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -131,8 +133,8 @@ const Certificates = () => {
                 <img src={cert.imageUrl} alt={cert.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent opacity-60" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
-                  <motion.span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white border border-white/20" initial={{ y: 10 }} whileHover={{ y: 0 }} transition={{ duration: 0.2 }}>
-                    Klik untuk memperbesar
+                  <motion.span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white border border-white/20">
+                    Click to enlarge
                   </motion.span>
                 </div>
               </div>
@@ -160,7 +162,7 @@ const Certificates = () => {
                       <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <span>Berlaku hingga: {cert.validUntil}</span>
+                      <span>Valid until: {cert.validUntil}</span>
                     </div>
                   )}
                 </div>
@@ -175,7 +177,7 @@ const Certificates = () => {
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    Verifikasi
+                    Verify
                   </a>
                 )}
               </div>
