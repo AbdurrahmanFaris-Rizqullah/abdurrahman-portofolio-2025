@@ -1,10 +1,43 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Certificates = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const overlayVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
+
+  const modalVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.3,
+      y: 100,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        duration: 0.5,
+        bounce: 0.3,
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.5,
+      y: -100,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
 
   const openModal = (imageUrl: string) => {
     setSelectedImage(imageUrl);
@@ -13,11 +46,10 @@ const Certificates = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setTimeout(() => setSelectedImage(null), 300); // Menunggu animasi selesai
+    setTimeout(() => setSelectedImage(null), 300);
   };
 
   const certificates = [
-    
     {
       id: 2,
       name: "Junior Web Programmer",
@@ -87,12 +119,21 @@ const Certificates = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {certificates.map((cert) => (
-            <div key={cert.id} className="group bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-700/50 hover:border-blue-500/50 hover:scale-[1.02]">
+            <motion.div
+              key={cert.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="group bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-700/50 hover:border-blue-500/50 hover:scale-[1.02]"
+            >
               <div className="aspect-video relative cursor-pointer overflow-hidden" onClick={() => openModal(cert.imageUrl)}>
                 <img src={cert.imageUrl} alt={cert.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent opacity-60" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
-                  <span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white border border-white/20 transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">Lihat Detail</span>
+                  <motion.span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white border border-white/20" initial={{ y: 10 }} whileHover={{ y: 0 }} transition={{ duration: 0.2 }}>
+                    Klik untuk memperbesar
+                  </motion.span>
                 </div>
               </div>
 
@@ -138,28 +179,39 @@ const Certificates = () => {
                   </a>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Modal tetap sama tapi dengan tambahan blur */}
-      {selectedImage && (
-        <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/80 transition-all duration-300 ${isModalOpen ? "opacity-100" : "opacity-0"}`} onClick={closeModal}>
-          <div className={`relative transform transition-all duration-300 ${isModalOpen ? "scale-100 opacity-100" : "scale-90 opacity-0"}`} onClick={(e) => e.stopPropagation()}>
-            <button onClick={closeModal} className="absolute -top-12 right-0 text-white/80 hover:text-white transform hover:scale-110 transition-all duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <img
-              src={selectedImage}
-              alt="Certificate Preview"
-              className={`max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl transform transition-all duration-300 ${isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}
-            />
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {selectedImage && (
+          <>
+            <motion.div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md" variants={overlayVariants} initial="hidden" animate="visible" exit="exit" onClick={closeModal} />
+            <motion.div className="fixed inset-0 z-50 flex items-center justify-center p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <motion.div className="relative max-w-7xl w-full" variants={modalVariants} initial="hidden" animate="visible" exit="exit" onClick={(e) => e.stopPropagation()}>
+                <motion.button className="absolute -top-12 right-0 text-white/80 hover:text-white p-2 rounded-full hover:bg-white/10" onClick={closeModal} whileHover={{ rotate: 90 }} whileTap={{ scale: 0.9 }}>
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </motion.button>
+                <motion.img
+                  src={selectedImage}
+                  alt="Certificate Preview"
+                  className="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.1}
+                  whileDrag={{ scale: 0.95 }}
+                />
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

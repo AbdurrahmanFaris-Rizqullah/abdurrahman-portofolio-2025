@@ -10,21 +10,27 @@ const Projects = () => {
     tech: string[];
   }>(null);
 
+  // State baru untuk popup gambar
+  const [selectedImage, setSelectedImage] = useState<null | {
+    url: string;
+    title: string;
+  }>(null);
+
   const projects = [
     {
       title: "Waterwise - Digital Twin Water Monitoring",
       description: "Sistem monitoring digital twin 3D untuk pemantauan distribusi air yang diimplementasikan di Urbansolv. Mengembangkan backend untuk indikator proses dan integrasi dengan visualisasi 3D untuk monitoring real-time.",
       tech: ["Express.js", "Node.js", "PostgreSQL", "Prisma", "WebSocket"],
       demoLink: "https://waterwise.urbansolv.co.id/3d-layer",
-      image: "/images/projects/waterwise.jpg",
+      image: "/projects/waterwise.png",
       isProduction: true,
     },
     {
       title: "Urbansolv Landing Page Backend",
       description: "Pengembangan backend untuk landing page Urbansolv, perusahaan yang berfokus pada solusi smart city dan 3D geospatial. Mengimplementasikan sistem manajemen konten dan integrasi dengan frontend.",
-      tech: ["Node.js", "Express.js", "PostgreSQL", "Content Management"],
+      tech: ["Node.js", "Next.js", "PostgreSQL", "Prisma", "Cloudinary", "TypeScript"],
       demoLink: "https://urbansolv.co.id/home",
-      image: "/images/projects/urbansolv.jpg",
+      image: "/projects/landing-page.png",
       isProduction: true,
     },
     {
@@ -32,49 +38,49 @@ const Projects = () => {
       description: "Sistem monitoring digital twin 3D untuk pemantauan distribusi air. Mengembangkan indikator proses dan mengintegrasikannya dengan visualisasi 3D untuk monitoring real-time.",
       tech: ["Express.js", "Node.js", "PostgreSQL", "Prisma"],
       github: "https://github.com/AbdurrahmanFaris-Rizqullah/backend-digital-twin",
-      image: "/images/projects/digital-twin.jpg",
+      image: "/projects/digital-twin-api.png",
     },
     {
       title: "Smart Building with Machine Learning",
       description: "Sistem smart building dengan implementasi machine learning untuk prediksi dan optimasi. Melakukan pelatihan model ML dan pengembangan API untuk integrasi dengan sistem monitoring.",
       tech: ["Python", "FastAPI", "SQLAlchemy", "Machine Learning", "PostgreSQL"],
       github: "https://github.com/AbdurrahmanFaris-Rizqullah/smartBuilding-api",
-      image: "/images/projects/smart-building-ml.jpg",
+      image: "/projects/smartbuilding-ml.png",
     },
     {
       title: "Smart Building Monitoring System",
       description: "Sistem monitoring smart building versi awal dengan pendekatan rule-based. Mengimplementasikan logika kontrol dan monitoring untuk berbagai parameter bangunan.",
       tech: ["Express.js", "Prisma", "PostgreSQL", "Node.js"],
       github: "https://github.com/AbdurrahmanFaris-Rizqullah/SmartBuilding---Express",
-      image: "/images/projects/smart-building.jpg",
+      image: "/projects/smartbuilding-js.png",
     },
     {
       title: "Building Management API",
       description: "RESTful API untuk manajemen data bangunan dengan fitur upload multi-gambar menggunakan Cloudinary. Implementasi TypeScript untuk type safety dan maintainability yang lebih baik.",
       tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Cloudinary"],
       github: "https://github.com/AbdurrahmanFaris-Rizqullah/Building-API-NEXT-JS",
-      image: "/images/projects/building-api.jpg",
+      image: "/projects/building-next.png",
     },
     {
       title: "Infrastructure Monitoring API",
       description: "API untuk pemantauan infrastruktur kota dengan fitur polygon mapping antar koordinat. Memungkinkan visualisasi dan analisis sebaran infrastruktur.",
-      tech: ["Express.js", "Sequelize", "PostgreSQL", "GeoJSON"],
+      tech: ["Express.js", "Sequelize", "PostgreSQL", "GeoJSON", "Swagger"],
       github: "https://github.com/AbdurrahmanFaris-Rizqullah/pemantauan-infrastruktur-api",
-      image: "/images/projects/infrastructure.jpg",
+      image: "/projects/infrastructure.png",
     },
     {
       title: "Boarding House Management API",
       description: "API manajemen kost dengan implementasi error handling terstruktur dan middleware komprehensif. Fokus pada reliability dan maintainability.",
       tech: ["Express.js", "Sequelize", "PostgreSQL", "Error Handling"],
       github: "https://github.com/AbdurrahmanFaris-Rizqullah/Boarding-house-api",
-      image: "/images/projects/boarding-house.jpg",
+      image: "/projects/boarding-house.png",
     },
     {
       title: "Location Management API",
       description: "CRUD API lokasi dengan implementasi autentikasi JWT. Sistem manajemen lokasi dengan fitur keamanan dan validasi data.",
       tech: ["Express.js", "MongoDB", "JWT", "Node.js"],
       github: "https://github.com/AbdurrahmanFaris-Rizqullah/Lokasi-API",
-      image: "/images/projects/location-api.jpg",
+      image: "/projects/location-api.jpg",
     },
   ];
 
@@ -108,6 +114,30 @@ const Projects = () => {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
     exit: { opacity: 0 },
+  };
+
+  // Tambahkan variants untuk image popup
+  const imagePopupVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.3,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        duration: 0.6,
+        bounce: 0.3,
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.5,
+      transition: {
+        duration: 0.3,
+      },
+    },
   };
 
   return (
@@ -146,7 +176,7 @@ const Projects = () => {
 
               {/* Card content dengan z-index yang lebih tinggi */}
               <div className="relative z-10">
-                <div className="aspect-video relative overflow-hidden">
+                <div className="aspect-video relative overflow-hidden cursor-pointer" onClick={() => setSelectedImage({ url: project.image, title: project.title })}>
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent"></div>
                   {project.isProduction && (
@@ -154,6 +184,9 @@ const Projects = () => {
                       <span className="px-3 py-1 text-xs font-medium bg-green-500/20 text-green-400 rounded-full border border-green-500/30 backdrop-blur-sm">Production</span>
                     </div>
                   )}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="px-4 py-2 bg-black/50 text-white rounded-lg backdrop-blur-sm border border-white/10">Klik untuk memperbesar</span>
+                  </div>
                 </div>
 
                 <div className="p-6 relative">
@@ -258,6 +291,35 @@ const Projects = () => {
                 </motion.div>
               </motion.div>
             </div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Image Popup Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <>
+            <motion.div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedImage(null)} />
+            <motion.div className="fixed inset-0 z-50 flex items-center justify-center p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <motion.div className="relative max-w-7xl w-full" variants={imagePopupVariants} initial="hidden" animate="visible" exit="exit" onClick={(e) => e.stopPropagation()}>
+                <motion.button className="absolute -top-12 right-0 text-white/80 hover:text-white p-2 rounded-full hover:bg-white/10" onClick={() => setSelectedImage(null)} whileHover={{ rotate: 90 }} whileTap={{ scale: 0.9 }}>
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </motion.button>
+                <motion.img
+                  src={selectedImage.url}
+                  alt={selectedImage.title}
+                  className="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                />
+                <motion.h4 className="text-white text-center mt-4 text-lg font-medium" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+                  {selectedImage.title}
+                </motion.h4>
+              </motion.div>
+            </motion.div>
           </>
         )}
       </AnimatePresence>
