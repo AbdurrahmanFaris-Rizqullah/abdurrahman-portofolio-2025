@@ -51,6 +51,17 @@ const Certificates = () => {
 
   const certificates = [
     {
+      id: 1,
+      name: "Junior Web Programmer",
+      issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
+      date: "November 18, 2024",
+      credentialId: "62090 2513 3 0113469 2024",
+      imageUrl: "/certificates/bnsp web programmer.jpg",
+      registrationNumber: "TIK 1565 35980 2024",
+      type: "Professional Certification",
+      validUntil: "November 18, 2027",
+    },
+    {
       id: 2,
       name: "Junior Web Programmer",
       issuer: "Department of Informatics ITSK RS dr. Soepraoen",
@@ -70,6 +81,16 @@ const Certificates = () => {
     },
     {
       id: 4,
+      name: "Photography",
+      issuer: "ITSK RS dr. Soepraoen",
+      date: "December 15, 2024",
+      credentialId: "PHOTO/2024/12/15",
+      imageUrl: "/certificates/photography.jpg",
+      type: "Achievement Certificate",
+      role: "Best Photography",
+    },
+    {
+      id: 5,
       name: "JavaScript Programming Fundamentals",
       issuer: "Dicoding Indonesia",
       date: "October 28, 2024",
@@ -79,7 +100,7 @@ const Certificates = () => {
       validUntil: "October 28, 2027",
     },
     {
-      id: 5,
+      id: 6,
       name: "Introduction to Programming Logic (Programming Logic 101)",
       issuer: "Dicoding Indonesia",
       date: "June 03, 2024",
@@ -89,7 +110,7 @@ const Certificates = () => {
       validUntil: "June 03, 2027",
     },
     {
-      id: 6,
+      id: 7,
       name: "AI LABORATORY COMPUTER SIMULATION AT ITSK RS. DR. SOEPRAOEN ENTERING A NEW WORLD THROUGH VIRTUAL REALITY (VR)",
       issuer: "Directorate General of Intellectual Property",
       date: "February 21, 2024",
@@ -99,7 +120,7 @@ const Certificates = () => {
       registrationNumber: "000592286",
     },
     {
-      id: 1,
+      id: 8,
       name: "Informatics Gathering Night 2023",
       issuer: "Informatics Student Association ITSK RS dr. Soepraoen",
       date: "2023",
@@ -114,9 +135,7 @@ const Certificates = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">Certifications</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Collection of certificates and achievements obtained throughout my skill development and career journey
-          </p>
+          <p className="text-gray-400 max-w-2xl mx-auto">Collection of certificates and achievements obtained throughout my skill development and career journey</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -133,9 +152,7 @@ const Certificates = () => {
                 <img src={cert.imageUrl} alt={cert.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent opacity-60" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
-                  <motion.span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white border border-white/20">
-                    Click to enlarge
-                  </motion.span>
+                  <motion.span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white border border-white/20">Click to enlarge</motion.span>
                 </div>
               </div>
 
