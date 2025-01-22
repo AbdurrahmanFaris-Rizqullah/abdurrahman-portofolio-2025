@@ -63,6 +63,19 @@ const Certificates = () => {
     },
     {
       id: 2,
+      name: "Certificate of Internship Completion",
+      issuer: "PT. Multi Solusindo (Urbansolv)",
+      date: "January 01, 2025",
+      credentialId: "042/USV.01.03.02/SFT/XII/2024",
+      imageUrl: "/certificates/intern-urbansolv.png",
+      type: "Internship Certificate",
+      role: "Backend Programmer",
+      location: "Jl. Tubagus Ismail XVI No. 7, Bandung, Indonesia",
+      period: "October 7, 2024 - December 31, 2024",
+      description: "Completed internship program as Backend Programmer in the Tech Division, demonstrating adequate performance in developing smart city solutions.",
+    },
+    {
+      id: 4,
       name: "Junior Web Programmer",
       issuer: "Department of Informatics ITSK RS dr. Soepraoen",
       date: "July 23-24, 2024",
@@ -70,7 +83,7 @@ const Certificates = () => {
       imageUrl: "/certificates/Cert (15)_Perlatihan Web Dev.jpg",
     },
     {
-      id: 3,
+      id: 5,
       name: "Getting Started with Java Programming",
       issuer: "Dicoding Indonesia",
       date: "April 10, 2023",
@@ -79,18 +92,9 @@ const Certificates = () => {
       verifyLink: "https://dicoding.com/certificates/NVP7OGR94PRO",
       validUntil: "April 10, 2026",
     },
+   
     {
-      id: 4,
-      name: "Photography",
-      issuer: "ITSK RS dr. Soepraoen",
-      date: "December 15, 2024",
-      credentialId: "PHOTO/2024/12/15",
-      imageUrl: "/certificates/photography.jpg",
-      type: "Achievement Certificate",
-      role: "Best Photography",
-    },
-    {
-      id: 5,
+      id: 7,
       name: "JavaScript Programming Fundamentals",
       issuer: "Dicoding Indonesia",
       date: "October 28, 2024",
@@ -100,7 +104,7 @@ const Certificates = () => {
       validUntil: "October 28, 2027",
     },
     {
-      id: 6,
+      id: 8,
       name: "Introduction to Programming Logic (Programming Logic 101)",
       issuer: "Dicoding Indonesia",
       date: "June 03, 2024",
@@ -110,7 +114,7 @@ const Certificates = () => {
       validUntil: "June 03, 2027",
     },
     {
-      id: 7,
+      id: 9,
       name: "AI LABORATORY COMPUTER SIMULATION AT ITSK RS. DR. SOEPRAOEN ENTERING A NEW WORLD THROUGH VIRTUAL REALITY (VR)",
       issuer: "Directorate General of Intellectual Property",
       date: "February 21, 2024",
@@ -120,13 +124,23 @@ const Certificates = () => {
       registrationNumber: "000592286",
     },
     {
-      id: 8,
+      id: 10,
       name: "Informatics Gathering Night 2023",
       issuer: "Informatics Student Association ITSK RS dr. Soepraoen",
       date: "2023",
       credentialId: "007/IGN/HIMATIF/2023",
       imageUrl: "/certificates/Abdurrahman-GatheringHimatif-007.png",
       role: "Committee",
+    },
+    {
+      id: 6,
+      name: "Basic Photography Course",
+      issuer: "Riza Mulia Photography",
+      date: "Malang June, 2023",
+      credentialId: "PHOTO/2024/12/15",
+      imageUrl: "/certificates/photography.jpg",
+      type: "Course Certificate",
+      role: "Photographer",
     },
   ];
 
@@ -173,6 +187,33 @@ const Certificates = () => {
                     </svg>
                     <span>{cert.date}</span>
                   </div>
+
+                  {cert.credentialId && (
+                    <div className="flex items-center text-gray-400">
+                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                      </svg>
+                      <span>ID: {cert.credentialId}</span>
+                    </div>
+                  )}
+
+                  {cert.type && (
+                    <div className="flex items-center text-gray-400">
+                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                      </svg>
+                      <span>Type: {cert.type}</span>
+                    </div>
+                  )}
+
+                  {cert.role && (
+                    <div className="flex items-center text-gray-400">
+                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                      <span>Role: {cert.role}</span>
+                    </div>
+                  )}
 
                   {cert.validUntil && (
                     <div className="flex items-center text-gray-400">

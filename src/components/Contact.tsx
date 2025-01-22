@@ -10,12 +10,12 @@ type ContactColor = "blue" | "green" | "purple" | "gray" | "red";
 const CONTACTS = [
   {
     title: "Email",
-    value: "nugasriz03@gmail.com",
+    value: "nugasriz03@gmail.com", 
     iconUrl: "https://cdn.simpleicons.org/gmail/white",
-    link: "mailto:nugasriz03@gmail.com",
+    link: "https://mail.google.com/mail/?view=cm&fs=1&to=nugasriz03@gmail.com",
     color: "blue" as ContactColor,
     gradient: "from-blue-500 to-cyan-400",
-  },
+  },  
   {
     title: "WhatsApp",
     value: "+62 85230184717",

@@ -104,7 +104,7 @@ const About = () => {
                 {/* Main Company */}
                 <div className="mb-8">
                   <div className="text-2xl font-bold text-white">PT. Multi Solusindo (Urbansolv)</div>
-                  <div className="text-blue-400 text-lg mb-1">Junior Backend Developer</div>
+                  <div className="text-blue-400 text-lg mb-1">Junior Backend Programmer</div>
                   <div className="text-gray-400 mb-2">Oct 2024 - Dec 2024 • Dago, Bandung - Indonesia</div>
                   <div className="text-gray-300">
                     Urbansolv, part of SCCIC ITB, develops smart solutions (automation, IoT, AI) for smart cities and sustainable communities. Major clients: Ministry of Communication and Information Technology, NTU. Flagship products: CENA

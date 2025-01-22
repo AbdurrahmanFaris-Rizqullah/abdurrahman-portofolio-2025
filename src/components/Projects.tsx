@@ -19,7 +19,8 @@ const Projects = () => {
   const projects = [
     {
       title: "Waterwise - Digital Twin Water Monitoring",
-      description: "Digital twin 3D monitoring system for water distribution implemented at Urbansolv. Developed backend for process indicators and integration with 3D visualization for real-time monitoring. Part of Urbansolv's smart city solutions focusing on sustainable water management.",
+      description:
+        "Digital twin 3D monitoring system for water distribution implemented at Urbansolv. Developed backend for process indicators and integration with 3D visualization for real-time monitoring. Part of Urbansolv's smart city solutions focusing on sustainable water management.",
       tech: ["Express.js", "Node.js", "PostgreSQL", "Prisma", "WebSocket"],
       demoLink: "https://waterwise.urbansolv.co.id/3d-layer",
       image: "/projects/waterwise.png",
@@ -27,29 +28,33 @@ const Projects = () => {
     },
     {
       title: "Urbansolv Landing Page Backend",
-      description: "Developed and optimized the backend for Urbansolv's corporate website, a leading provider of smart city solutions specializing in 3D geospatial technology. Implemented content management system and integrated with frontend to showcase services including Digital Twin, Smart Building, and Geospatial Analytics.",
+      description:
+        "Developed and optimized the backend for Urbansolv's corporate website, a leading provider of smart city solutions specializing in 3D geospatial technology. Implemented content management system and integrated with frontend to showcase services including Digital Twin, Smart Building, and Geospatial Analytics.",
       tech: ["Node.js", "Next.js", "PostgreSQL", "Prisma", "Cloudinary", "TypeScript"],
       demoLink: "https://urbansolv.co.id/home",
       image: "/projects/landing-page.png",
       isProduction: true,
     },
-    {
-      title: "INSPIRASI Platform",
-      description: "Collaborative platform supporting ITB, UI, UGM, ITS, and NTU Singapore, focusing on Cognitive Digital Twin as a Unified Platform for Smart Cities. Integrated features for urban governance, sustainability monitoring, and innovative city applications.",
-      tech: ["Express.js", "Node.js", "PostgreSQL", "Redis", "WebSocket"],
-      image: "/projects/inspirasi.png",
-      isProduction: true,
-    },
+    // {
+    //   title: "INSPIRASI Platform",
+    //   description:
+    //     "Collaborative platform supporting ITB, UI, UGM, ITS, and NTU Singapore, focusing on Cognitive Digital Twin as a Unified Platform for Smart Cities. Integrated features for urban governance, sustainability monitoring, and innovative city applications.",
+    //   tech: ["Express.js", "Node.js", "PostgreSQL", "Sequelize"],
+    //   image: "/projects/inspirasi.png",
+    //   isProduction: true,
+    // },
     {
       title: "Digital Twin - Smart Building Monitoring",
-      description: "3D digital twin monitoring system for building management. Developed process indicators and integrated with 3D visualization for real-time monitoring and analysis. Features include sensor data processing, real-time alerts, and analytics dashboard.",
+      description:
+        "3D digital twin monitoring system for building management. Developed process indicators and integrated with 3D visualization for real-time monitoring and analysis. Features include sensor data processing, real-time alerts, and analytics dashboard.",
       tech: ["Express.js", "Node.js", "PostgreSQL", "Prisma"],
       github: "https://github.com/AbdurrahmanFaris-Rizqullah/backend-digital-twin",
       image: "/projects/digital-twin-api.png",
     },
     {
       title: "Smart Building with Machine Learning",
-      description: "Smart building system with machine learning implementation for prediction and optimization. Conducted ML model training and developed API integration with monitoring systems. Includes predictive maintenance and energy optimization features.",
+      description:
+        "Smart building system with machine learning implementation for prediction and optimization. Conducted ML model training and developed API integration with monitoring systems. Includes predictive maintenance and energy optimization features.",
       tech: ["Python", "FastAPI", "SQLAlchemy", "Machine Learning", "PostgreSQL"],
       github: "https://github.com/AbdurrahmanFaris-Rizqullah/smartBuilding-api",
       image: "/projects/smartbuilding-ml.png",
