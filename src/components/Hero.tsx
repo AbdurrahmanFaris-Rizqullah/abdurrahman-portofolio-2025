@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
   const containerVariants = {
@@ -26,36 +27,51 @@ const Hero = () => {
     },
   };
 
+  // Detect mobile device
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden">
-      {/* Enhanced animated background */}
+    <section className="relative min-h-screen flex items-center justify-center py-12 md:py-20 overflow-hidden">
+      {/* Optimized background for mobile */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900/20 to-gray-900">
           <div className="absolute inset-0 bg-[url('/patterns/circuit-board.svg')] opacity-5" />
         </div>
 
-        {/* Improved gradient orbs with multiple layers */}
-        <div className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -top-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-700" />
-        <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+        {/* Reduced gradient orbs for mobile */}
+        {!isMobile && (
+          <>
+            <div className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute -top-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-700" />
+            <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+          </>
+        )}
 
-        {/* Enhanced particles with different sizes */}
+        {/* Simplified particles for mobile */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(30)].map((_, i) => (
+          {[...Array(isMobile ? 10 : 30)].map((_, i) => (
             <motion.div
               key={i}
-              className={`absolute rounded-full ${i % 3 === 0 ? "w-1 h-1 bg-blue-400/50" : i % 3 === 1 ? "w-2 h-2 bg-purple-400/40" : "w-1.5 h-1.5 bg-indigo-400/45"}`}
+              className={`absolute rounded-full ${i % 3 === 0 ? "w-1 h-1 bg-blue-400/50" : "w-1 h-1 bg-purple-400/40"}`}
               initial={{
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
               }}
               animate={{
-                y: [null, Math.random() * -500],
-                x: [null, Math.random() * 200 - 100],
+                y: [null, Math.random() * -300],
                 opacity: [0.5, 0],
               }}
               transition={{
-                duration: Math.random() * 5 + 5,
+                duration: Math.random() * 3 + 2,
                 repeat: Infinity,
                 ease: "linear",
               }}
@@ -64,57 +80,45 @@ const Hero = () => {
         </div>
       </div>
 
-      <motion.div className="container relative z-10 mx-auto px-4" variants={containerVariants} initial="hidden" animate="visible">
+      <motion.div className="container relative z-10 mx-auto px-4 sm:px-6" variants={containerVariants} initial="hidden" animate="visible">
         <div className="text-center max-w-4xl mx-auto">
-          {/* Enhanced Profile Image */}
-          <motion.div className="relative w-48 h-48 mx-auto mb-12" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", duration: 1, bounce: 0.5 }}>
-            {/* Multiple glow layers */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-full opacity-75 blur-lg animate-pulse" />
-            <div className="absolute -inset-8 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-blue-500/20 rounded-full opacity-50 blur-xl animate-pulse delay-300" />
+          {/* Profile Image - Optimized for mobile */}
+          <motion.div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-48 md:h-48 mx-auto mb-6 sm:mb-8 md:mb-12" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", duration: 1, bounce: 0.5 }}>
+            {/* Simplified glow for mobile */}
+            <div className="absolute -inset-1 sm:-inset-2 md:-inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-full opacity-75 blur-lg animate-pulse" />
 
-            {/* Rotating border with double layers */}
+            {/* Single rotating border for mobile */}
             <motion.div className="absolute -inset-1 rounded-full" animate={{ rotate: 360 }} transition={{ duration: 8, repeat: Infinity, ease: "linear" }}>
               <div
-                className="h-full w-full rounded-full border-4 border-transparent"
+                className="h-full w-full rounded-full border border-transparent"
                 style={{
                   background: "linear-gradient(white, white) padding-box, linear-gradient(45deg, #3B82F6, #A855F7, #3B82F6) border-box",
                 }}
               />
             </motion.div>
-            <motion.div className="absolute -inset-2 rounded-full" animate={{ rotate: -360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }}>
-              <div
-                className="h-full w-full rounded-full border-2 border-transparent opacity-50"
-                style={{
-                  background: "linear-gradient(white, white) padding-box, linear-gradient(-45deg, #3B82F6, #A855F7, #3B82F6) border-box",
-                }}
-              />
-            </motion.div>
 
-            {/* Profile image container with enhanced hover effect */}
-            <div className="relative w-full h-full rounded-full p-2">
-              <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 p-1">
-                <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }} className="relative group">
-                  <Image src="/profile.jpg" alt="Abdurrahman Faris Rizqullah" width={192} height={192} className="rounded-full object-cover transition-all duration-300 group-hover:grayscale-[50%]" priority />
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.div>
+            {/* Profile image */}
+            <div className="relative w-full h-full rounded-full p-1">
+              <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+                <Image src="/profile.jpg" alt="Abdurrahman Faris Rizqullah" width={192} height={192} className="rounded-full object-cover" priority />
               </div>
             </div>
           </motion.div>
 
-          {/* Enhanced Text Content */}
-          <motion.h1 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 text-transparent bg-clip-text" variants={itemVariants}>
-            Abdurrahman Faris Rizqullah
+          {/* Text content - Responsive */}
+          <motion.h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 md:mb-8" variants={itemVariants}>
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 text-transparent bg-clip-text">Abdurrahman Faris Rizqullah</span>
           </motion.h1>
 
-          <motion.div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-10" variants={itemVariants}>
-            {/* Enhanced role badges */}
-            <div className="text-xl text-gray-300 flex items-center gap-3 backdrop-blur-sm bg-white/5 px-8 py-3 rounded-full border border-white/10 hover:border-blue-500/30 transition-colors duration-300">
+          {/* Role badges - Stack on mobile */}
+          <motion.div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-8 md:mb-10" variants={itemVariants}>
+            <div className="w-full md:w-auto text-base md:text-xl text-gray-300 flex items-center justify-center gap-3 backdrop-blur-sm bg-white/5 px-6 md:px-8 py-2 md:py-3 rounded-full border border-white/10 hover:border-blue-500/30 transition-colors duration-300">
               <motion.span className="text-blue-400" animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
                 👨‍💻
               </motion.span>
               Backend Developer
             </div>
-            <div className="text-xl text-gray-300 flex items-center gap-3 backdrop-blur-sm bg-white/5 px-8 py-3 rounded-full border border-white/10 hover:border-purple-500/30 transition-colors duration-300">
+            <div className="w-full md:w-auto text-base md:text-xl text-gray-300 flex items-center justify-center gap-3 backdrop-blur-sm bg-white/5 px-6 md:px-8 py-2 md:py-3 rounded-full border border-white/10 hover:border-purple-500/30 transition-colors duration-300">
               <motion.span className="text-purple-400" animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }}>
                 🎓
               </motion.span>
@@ -122,11 +126,13 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          <motion.p className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed" variants={itemVariants}>
+          {/* Description - Responsive padding */}
+          <motion.p className="text-base md:text-lg lg:text-xl text-gray-300 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4" variants={itemVariants}>
             6th semester Informatics undergraduate student at ITSK RS dr. Soepraoen Kesdam V/BRW Malang, passionate about backend development and creating efficient, scalable systems.
           </motion.p>
 
-          <motion.div className="flex flex-wrap gap-4 justify-center" variants={itemVariants}>
+          {/* Action buttons - Stack on mobile */}
+          <motion.div className="flex flex-col sm:flex-row gap-4 justify-center px-4" variants={itemVariants}>
             <motion.a
               href="#projects"
               className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full 
@@ -148,8 +154,8 @@ const Hero = () => {
             </motion.a>
           </motion.div>
 
-          {/* Social Links */}
-          <motion.div className="mt-12 flex justify-center gap-6" variants={itemVariants}>
+          {/* Social Links - Adjusted spacing for mobile */}
+          <motion.div className="mt-8 md:mt-12 flex justify-center gap-4 md:gap-6" variants={itemVariants}>
             <motion.a
               href="https://github.com/AbdurrahmanFaris-Rizqullah"
               className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
