@@ -118,7 +118,7 @@ const Navbar = () => {
               }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              .Porto.Dev
+              .Portofolio
             </motion.span>
           </motion.a>
 
