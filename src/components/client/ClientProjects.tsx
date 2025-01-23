@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const About = dynamic(() => import("./About"), {
+const Projects = dynamic(() => import("../sections/Projects"), {
   ssr: false,
   loading: () => (
     <div className="min-h-screen flex items-center justify-center">
@@ -11,6 +11,6 @@ const About = dynamic(() => import("./About"), {
   ),
 });
 
-export default function ClientAbout() {
-  return <About />;
+export default function ClientProjects() {
+  return <Projects />;
 }

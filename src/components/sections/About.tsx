@@ -152,7 +152,7 @@ const About = () => {
                     <div className="text-white font-medium">Landing Page INSPIRASI</div>
                     <ul className="list-disc pl-4 text-gray-300 space-y-2 mt-2">
                       <li>
-                        Developed a collaborative platform supporting ITB, UI, UGM, ITS, and NTU Singapore, focusing on "Cognitive Digital Twin as a Unified Platform for Smart Cities." Redesigned the backend system using Express.js, integrating features for governance, sustainability, and innovative urban applications.
+                        Developed a collaborative platform supporting ITB, UI, UGM, ITS, and NTU Singapore, focusing on &ldquo;Cognitive Digital Twin as a Unified Platform for Smart Cities.&rdquo; Redesigned the backend system using Express.js, integrating features for governance, sustainability, and innovative urban applications.
                       </li>
                       <li>
                         Improved system efficiency by 25%, enabling seamless collaboration among 50+ researchers and stakeholders to address climate change challenges and drive sustainable urban development.
@@ -173,7 +173,7 @@ const About = () => {
 
                 {/* Main Education */}
                 <div className="mb-8">
-                  <div className="text-2xl font-bold text-white">Institut Teknologi Sains & Kesehatan RS dr. Soepraoen Kesdam V / BRW</div>
+                  <div className="text-2xl font-bold text-white">Institut Teknologi Sains &amp; Kesehatan RS dr. Soepraoen Kesdam V / BRW</div>
                   <div className="text-green-400 text-lg mb-1">Bachelor of Informatics</div>
                   <div className="text-gray-400 mb-2">Aug 2022 - Aug 2026 (Expected) • GPA: 3.79/4.00</div>
                   <div className="text-gray-300">Malang, East Java, Indonesia</div>
@@ -188,7 +188,7 @@ const About = () => {
                     <div className="text-gray-400 text-sm mb-2">2024 - 2025</div>
                     <ul className="list-disc pl-4 text-gray-300 space-y-2">
                       <li>Led the development and coordination of an Augmented Reality (AR) implementation project for laptop hardware to facilitate hardware inspection without opening physical devices (PKM-KC 2024)</li>
-                      <li>Led a research project titled "Drug Sensitivity Prediction in Cancer Cells Based on Genomic Profiles Using Regression Techniques", collaborating with Data Scientists and writers (PKM-AI 2025)</li>
+                      <li>Led a research project titled &ldquo;Drug Sensitivity Prediction in Cancer Cells Based on Genomic Profiles Using Regression Techniques&rdquo;, collaborating with Data Scientists and writers (PKM-AI 2025)</li>
                     </ul>
                   </div>
 
@@ -211,7 +211,7 @@ const About = () => {
                     <div className="text-green-400 text-sm mb-1">ITSK RS dr. Soepraoen Kesdam V/BRW</div>
                     <div className="text-gray-400 text-sm mb-2">2023</div>
                     <ul className="list-disc pl-4 text-gray-300 space-y-2">
-                      <li>Served as lead coordinator in the development and design of "Web-based Public Information Dashboard E-Government" improving visual presentation and accessibility of public information</li>
+                      <li>Served as lead coordinator in the development and design of &ldquo;Web-based Public Information Dashboard E-Government&rdquo; improving visual presentation and accessibility of public information</li>
                       <li>Developed key features with 4 other team members, projecting a 30-40% increase in active users within the first three months</li>
                     </ul>
                   </div>
@@ -223,7 +223,7 @@ const About = () => {
                     <div className="text-green-400 text-sm mb-1">ITSK RS dr. Soepraoen Kesdam V/BRW</div>
                     <div className="text-gray-400 text-sm mb-2">2023</div>
                     <ul className="list-disc pl-4 text-gray-300 space-y-2">
-                      <li>Served as lead coordinator, analyzing and designing the development of "Web-based Boarding House Management System" currently in development phase</li>
+                      <li>Served as lead coordinator, analyzing and designing the development of &ldquo;Web-based Boarding House Management System&rdquo; currently in development phase</li>
                     </ul>
                   </div>
 
@@ -234,7 +234,7 @@ const About = () => {
                     <div className="text-green-400 text-sm mb-1">Direktorat Jenderal Kekayaan Intelektual (DJKI)</div>
                     <div className="text-gray-400 text-sm mb-2">2023</div>
                     <ul className="list-disc pl-4 text-gray-300 space-y-2">
-                      <li>Contributed as lead and main creator in developing copyrighted computer program titled "AI Laboratory Simulation at ITSK RS. DR. Soepraoen Entering a New World Through Virtual Reality (VR)"</li>
+                      <li>Contributed as lead and main creator in developing copyrighted computer program titled &ldquo;AI Laboratory Simulation at ITSK RS. DR. Soepraoen Entering a New World Through Virtual Reality (VR)&rdquo;</li>
                       <li>Program projected to be used by over 100 students, increasing campus information accessibility by 40-50%</li>
                     </ul>
                   </div>
@@ -286,8 +286,8 @@ const About = () => {
                 {/* M-time */}
                 <div className="relative pl-6 border-l-2 border-purple-500 hover:bg-purple-500/10 rounded-lg p-4 transition-all">
                   <div className="absolute w-3 h-3 bg-purple-500 rounded-full -left-[7px] top-2"></div>
-                  <div className="text-2xl font-bold text-white">Creative Agency "Managetime ( M-time )"</div>
-                  <div className="text-purple-400 text-lg mb-1">Co-Founder, Specializing Programmer & Photo/Video grapher</div>
+                  <div className="text-2xl font-bold text-white">Creative Agency &ldquo;Managetime ( M-time )&rdquo;</div>
+                  <div className="text-purple-400 text-lg mb-1">Co-Founder, Specializing Programmer &amp; Photo/Video grapher</div>
                   <div className="text-gray-400 mb-2">Apr 2024 - Present • Malang, East Java, Indonesia</div>
                   <div className="text-gray-300 mb-4">
                     Mtime is a creative agency, specializing in programming, multimedia, UI UX design, and engaging content creation to help and provide solutions for client project conceptualization.

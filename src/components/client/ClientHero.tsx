@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const Hero = dynamic(() => import("./Hero"), {
+const Hero = dynamic(() => import("../sections/Hero"), {
   ssr: false,
   loading: () => <div>Loading...</div>,
 });

@@ -1,10 +1,10 @@
-import Navbar from "@/components/Navbar";
-import ClientHero from "@/components/ClientHero";
-import ClientAbout from "@/components/ClientAbout";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
-import Certificates from "@/components/Certificates";
-import Contact from "@/components/Contact";
+import Navbar from "@/components/navigation/Navbar";
+import ClientHero from "@/components/client/ClientHero";
+import ClientAbout from "@/components/client/ClientAbout";
+import ClientProjects from "@/components/client/ClientProjects";
+import ClientSkills from "@/components/client/ClientSkills";
+import ClientCertificate from "@/components/client/ClientCertificate";
+import ClientContact from "@/components/client/ClientContact";
 
 export default function Home() {
   return (
@@ -12,10 +12,10 @@ export default function Home() {
       <Navbar />
       <ClientHero />
       <ClientAbout />
-      <Skills />
-      <Certificates />
-      <Projects />
-      <Contact />
+      <ClientSkills />
+      <ClientCertificate />
+      <ClientProjects />
+      <ClientContact />
     </main>
   );
 }

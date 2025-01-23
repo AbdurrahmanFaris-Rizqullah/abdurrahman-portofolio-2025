@@ -27,7 +27,7 @@ const CONTACTS = [
   {
     title: "LinkedIn",
     value: "abdurrahman-faris-rizqullah",
-    iconUrl: "/icons/linkedin-white.svg", // Using local SVG file instead of CDN
+    iconUrl: "/icons/linkedin-app-white-icon.webp", // Using local SVG file instead of CDN
     link: "https://www.linkedin.com/in/abdurrahman-faris-rizqullah/",
     color: "purple" as ContactColor, 
     gradient: "from-purple-500 to-indigo-400",
@@ -174,7 +174,7 @@ const Contact = () => {
 
       <motion.div className="container relative z-10 mx-auto px-4" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
         <motion.h2 className="text-4xl font-bold text-center mb-16" variants={itemVariants}>
-          <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">Let's Connect</span>
+          <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">Let&apos;s Connect</span>
         </motion.h2>
 
         {/* ICWR Images Gallery */}
@@ -207,7 +207,7 @@ const Contact = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp" className="w-6 h-6" />
+              <Image src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp" width={24} height={24} className="w-6 h-6" />
               Chat via WhatsApp
             </motion.a>
           </motion.div>
