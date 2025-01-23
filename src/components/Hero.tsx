@@ -100,7 +100,7 @@ const Hero = () => {
             {/* Profile image */}
             <div className="relative w-full h-full rounded-full p-1">
               <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
-                <Image src="/profile.jpg" alt="Abdurrahman Faris Rizqullah" width={192} height={192} className="rounded-full object-cover" priority />
+                <Image src="/avatar/profile.jpg" alt="Abdurrahman Faris Rizqullah" width={192} height={192} className="rounded-full object-cover" priority />
               </div>
             </div>
           </motion.div>

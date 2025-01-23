@@ -1,8 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-// eslint-disable-next-line
-// import { api } from "@/services/api";
+import Image from "next/image";
 
 interface Skill {
   id: number;
@@ -13,7 +12,7 @@ interface Skill {
 }
 
 const Skills = () => {
-  const [skills, setSkills] = useState<Record<string, Skill[]>>({
+  const [skills] = useState<Record<string, Skill[]>>({
     Backend: [
       { id: 1, name: "Node.js", category: "Backend", proficiency: 90, iconUrl: "https://cdn.simpleicons.org/nodedotjs" },
       { id: 2, name: "Express", category: "Backend", proficiency: 95, iconUrl: "https://cdn.simpleicons.org/express/white" },
@@ -147,7 +146,7 @@ const Skills = () => {
                             className="w-8 h-8 rounded-lg bg-gray-700/50 p-1.5 flex items-center justify-center
                                      group-hover:bg-blue-500/10 transition-colors duration-300"
                           >
-                            <img src={skill.iconUrl} alt={`${skill.name} icon`} className="w-full h-full object-contain" />
+                            <Image src={skill.iconUrl} alt={`${skill.name} icon`} width={32} height={32} className="w-full h-full object-contain" />
                           </motion.div>
                         )}
                         <span className="text-gray-200 font-medium">{skill.name}</span>

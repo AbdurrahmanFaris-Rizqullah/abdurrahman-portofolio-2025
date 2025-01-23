@@ -80,7 +80,7 @@ const ContactCard = ({ contact }: { contact: (typeof CONTACTS)[0] }) => {
       <div className={`absolute -inset-0.5 bg-gradient-to-r ${contact.gradient} rounded-xl blur opacity-25 group-hover:opacity-100 transition duration-500`} />
       <div className="relative flex items-start space-x-4 bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700/50 hover:border-transparent transform hover:scale-[1.02] transition-all duration-300">
         <div className="w-8 h-8 rounded-lg bg-gray-700/50 p-1.5 flex items-center justify-center group-hover:bg-gray-700/70 transition-colors duration-300">
-          <img src={contact.iconUrl} alt={`${contact.title} icon`} className="w-full h-full object-contain" />
+          <Image src={contact.iconUrl} alt={`${contact.title} icon`} width={32} height={32} className="w-full h-full object-contain" />
         </div>
         <div className="flex-1">
           <h3 className={`text-lg font-semibold ${colorClasses[contact.color]} mb-1`}>{contact.title}</h3>
