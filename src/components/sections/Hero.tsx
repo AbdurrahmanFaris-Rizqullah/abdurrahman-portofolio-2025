@@ -169,7 +169,7 @@ const Hero = () => {
               </svg>
             </motion.a>
             <motion.a
-              href="https://www.linkedin.com/in/abdurrahman-faris-rizqullah-4612a303/"
+              href="https://www.linkedin.com/in/abdurrahman-faris-rizqullah-41612a303"
               className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
               whileHover={{ scale: 1.1, rotate: -5 }}
               whileTap={{ scale: 0.9 }}

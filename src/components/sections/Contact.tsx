@@ -28,7 +28,7 @@ const CONTACTS = [
     title: "LinkedIn",
     value: "abdurrahman-faris-rizqullah",
     iconUrl: "/icons/linkedin-app-white-icon.webp", // Using local SVG file instead of CDN
-    link: "https://www.linkedin.com/in/abdurrahman-faris-rizqullah/",
+    link: "https://www.linkedin.com/in/abdurrahman-faris-rizqullah-41612a303",
     color: "purple" as ContactColor, 
     gradient: "from-purple-500 to-indigo-400",
   },
